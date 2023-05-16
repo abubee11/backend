@@ -1,0 +1,12 @@
+<?php
+// integrate with Facebook API
+require_once 'vendor/autoload.php';
+$fb = new Facebook\Facebook([
+  'app_id' => 'APP_ID',
+  'app_secret' => 'APP_SECRET',
+  'default_graph_version' => 'v3.2',
+]);
+$helper = $fb->getRedirectLoginHelper();
+$permissions = ['email']; // optional
+$loginUrl = $helper->getLoginUrl('https://example.com/fb-callback.php', $permissions);
+echo '<a
